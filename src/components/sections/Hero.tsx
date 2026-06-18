@@ -1,10 +1,16 @@
-import styled from '@emotion/styled';
-import { theme } from '../../styles/theme';
-import { keyframes } from '@emotion/react';
-import { lazy, Suspense } from 'react';
-const FaGithub = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaGithub })));
-const FaLinkedin = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaLinkedin })));
-const FaEnvelope = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaEnvelope })));
+import styled from "@emotion/styled";
+import { theme } from "../../styles/theme";
+import { keyframes } from "@emotion/react";
+import { lazy, Suspense } from "react";
+const FaGithub = lazy(() =>
+  import("react-icons/fa").then((mod) => ({ default: mod.FaGithub })),
+);
+const FaLinkedin = lazy(() =>
+  import("react-icons/fa").then((mod) => ({ default: mod.FaLinkedin })),
+);
+const FaEnvelope = lazy(() =>
+  import("react-icons/fa").then((mod) => ({ default: mod.FaEnvelope })),
+);
 
 const HeroSection = styled.section`
   min-height: calc(100vh - 4.5rem);
@@ -23,7 +29,7 @@ const HeroSection = styled.section`
     max-width: 1200px;
     margin: 0 auto;
     width: 95%;
-    
+
     @media (min-width: ${theme.breakpoints.sm}) {
       width: 90%;
     }
@@ -59,31 +65,50 @@ const fadeUpKeyframes = keyframes`
 
 const Title = styled.h1`
   animation: ${fadeUpKeyframes} 0.5s ease-out forwards;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   margin-bottom: ${theme.spacing.md};
   color: ${theme.colors.light};
   line-height: 1.1;
   letter-spacing: -0.02em;
-  white-space: nowrap;
 `;
 
 const Subtitle = styled.h2`
   animation: ${fadeUpKeyframes} 0.5s ease-out 0.2s forwards;
   opacity: 0;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  margin-bottom: ${theme.spacing.md};
+  font-weight: 500;
+  color: ${theme.colors.accent};
+`;
+
+const BadgeRow = styled.div`
+  animation: ${fadeUpKeyframes} 0.5s ease-out 0.3s forwards;
+  opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${theme.spacing.sm};
   margin-bottom: ${theme.spacing.lg};
-  opacity: 0.9;
+`;
+
+const Badge = styled.span`
+  background: ${theme.colors.glass.card};
+  color: ${theme.colors.accent};
+  border: 1px solid ${theme.colors.accent}44;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 500;
 `;
 
 const Description = styled.p`
   animation: ${fadeUpKeyframes} 0.5s ease-out 0.4s forwards;
   opacity: 0;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
-  max-width: 600px;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  max-width: 650px;
   margin-bottom: ${theme.spacing.xl};
-  opacity: 0.8;
   line-height: 1.7;
+  color: ${theme.colors.textLight};
+  opacity: 0.85;
 `;
 
 const SocialLinks = styled.div`
@@ -91,7 +116,7 @@ const SocialLinks = styled.div`
   opacity: 0;
   display: flex;
   gap: ${theme.spacing.md};
-  
+
   a {
     color: ${theme.colors.textLight};
     font-size: 1.5rem;
@@ -102,7 +127,7 @@ const SocialLinks = styled.div`
     align-items: center;
     justify-content: center;
     background: ${theme.colors.glass.background};
-    
+
     &:hover {
       color: ${theme.colors.light};
       transform: translateY(-3px);
@@ -113,7 +138,7 @@ const SocialLinks = styled.div`
 
   @media (min-width: ${theme.breakpoints.md}) {
     gap: ${theme.spacing.lg};
-    
+
     a {
       font-size: 1.75rem;
     }
@@ -127,46 +152,68 @@ export const Hero = () => {
         <HeroContent>
           <div>
             <Title role="heading" aria-level={2}>
-              Hi, I'm [Your Name]
+              Hola, soy Rafa Moreno
             </Title>
             <Subtitle role="heading" aria-level={3}>
-              Full Stack Developer
+              Desarrollador Full Stack · Backend · Cloud · Ciberseguridad
             </Subtitle>
+            <BadgeRow>
+              <Badge>Java · Spring Boot</Badge>
+              <Badge>React · Flutter</Badge>
+              <Badge>AWS · Docker</Badge>
+              <Badge>Bug Bounty</Badge>
+              <Badge>Inglés C1</Badge>
+            </BadgeRow>
             <Description role="paragraph">
-              I create elegant solutions to complex problems, specializing in modern web development
-              with a focus on user experience and clean code.
+              Desarrollador multiplataforma recién graduado, apasionado por
+              construir productos completos de principio a fin. Combino backend
+              sólido con Java y Spring Boot, frontend con React, cloud con AWS y
+              experiencia activa en ciberseguridad — con vulnerabilidades
+              reportadas a Vodafone, la NASA y la Comisión Europea.
             </Description>
             <SocialLinks role="list" aria-label="Social media links">
-              <a 
-                href="https://github.com" 
-                target="_blank" 
+              <a
+                href="https://github.com/rafamorenoo"
+                target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit my GitHub profile"
                 role="listitem"
               >
-                <Suspense fallback={<div style={{ width: '1.5rem', height: '1.5rem' }} />}>
+                <Suspense
+                  fallback={
+                    <div style={{ width: "1.5rem", height: "1.5rem" }} />
+                  }
+                >
                   <FaGithub aria-hidden="true" />
                 </Suspense>
                 <span className="sr-only">GitHub</span>
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href="https://linkedin.com/in/rafa-moreno-5b44b4307"
+                target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit my LinkedIn profile"
                 role="listitem"
               >
-                <Suspense fallback={<div style={{ width: '1.5rem', height: '1.5rem' }} />}>
+                <Suspense
+                  fallback={
+                    <div style={{ width: "1.5rem", height: "1.5rem" }} />
+                  }
+                >
                   <FaLinkedin aria-hidden="true" />
                 </Suspense>
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a 
-                href="mailto:your.email@example.com"
+              <a
+                href="mailto:rafamorenoo2004@gmail.com"
                 aria-label="Send me an email"
                 role="listitem"
               >
-                <Suspense fallback={<div style={{ width: '1.5rem', height: '1.5rem' }} />}>
+                <Suspense
+                  fallback={
+                    <div style={{ width: "1.5rem", height: "1.5rem" }} />
+                  }
+                >
                   <FaEnvelope aria-hidden="true" />
                 </Suspense>
                 <span className="sr-only">Email</span>

@@ -1,22 +1,26 @@
-import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
-import { theme } from '../../styles/theme';
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaDatabase, 
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
+import { theme } from "../../styles/theme";
+import {
+  FaReact,
+  FaNodeJs,
   FaDocker,
   FaGitAlt,
-  FaAws
-} from 'react-icons/fa';
-import { 
+  FaAws,
+  FaJava,
+  FaDatabase,
+  FaPython,
+} from "react-icons/fa";
+import {
   SiTypescript,
-  SiJavascript,
-  SiPython,
-  SiMongodb,
+  SiSpringboot,
   SiPostgresql,
-  SiRedux
-} from 'react-icons/si';
+  SiFlutter,
+  SiNextdotjs,
+  SiTerraform,
+  SiLinux,
+  SiJavascript,
+} from "react-icons/si";
 
 const SkillsSection = styled.section`
   min-height: 100vh;
@@ -42,7 +46,7 @@ const SectionTitle = styled(motion.h2)`
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -${theme.spacing.md};
     left: 50%;
@@ -63,8 +67,12 @@ const SkillsContainer = styled.div`
   margin-top: ${theme.spacing.xl};
 
   @media (min-width: ${theme.breakpoints.md}) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: ${theme.spacing.xl};
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
@@ -77,8 +85,6 @@ const SkillCategory = styled(motion.div)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  margin: 0 auto;
   width: 100%;
 
   &:hover {
@@ -88,8 +94,8 @@ const SkillCategory = styled(motion.div)`
 `;
 
 const CategoryTitle = styled.h3`
-  font-size: clamp(1.5rem, 3vw, 1.75rem);
-  margin-bottom: ${theme.spacing.xl};
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  margin-bottom: ${theme.spacing.lg};
   color: ${theme.colors.light};
   display: flex;
   align-items: center;
@@ -99,7 +105,7 @@ const CategoryTitle = styled.h3`
   padding-bottom: ${theme.spacing.md};
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -110,42 +116,40 @@ const CategoryTitle = styled.h3`
   }
 
   svg {
-    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-size: 1.5rem;
     color: ${theme.colors.accent};
   }
 `;
 
 const SkillsList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${theme.spacing.md};
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.sm};
   flex: 1;
-  width: 100%;
 `;
 
 const SkillItem = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: ${theme.spacing.sm};
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  padding: ${theme.spacing.md};
-  border-radius: 12px;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  padding: ${theme.spacing.sm} ${theme.spacing.md};
+  border-radius: 10px;
   transition: all ${theme.transitions.default};
   background: ${theme.colors.glass.card};
 
   svg {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: 1.1rem;
     color: ${theme.colors.accent};
     transition: all ${theme.transitions.default};
+    flex-shrink: 0;
   }
 
   &:hover {
     background: ${theme.colors.gradient.glass};
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(246, 177, 122, 0.2);
+    transform: translateX(4px);
 
     svg {
-      transform: scale(1.1) rotate(5deg);
       color: ${theme.colors.light};
     }
   }
@@ -153,33 +157,51 @@ const SkillItem = styled(motion.div)`
 
 const skillCategories = [
   {
-    title: 'Frontend',
+    title: "Backend",
+    icon: <FaJava />,
+    skills: [
+      { name: "Java 21", icon: <FaJava /> },
+      { name: "Spring Boot", icon: <SiSpringboot /> },
+      { name: "Python", icon: <FaPython /> },
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "REST APIs", icon: <FaDatabase /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+    ],
+  },
+  {
+    title: "Frontend & Mobile",
     icon: <FaReact />,
     skills: [
-      { name: 'React', icon: <FaReact /> },
-      { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'JavaScript', icon: <SiJavascript /> },
-      { name: 'Redux', icon: <SiRedux /> },
+      { name: "React 18", icon: <FaReact /> },
+      { name: "Next.js 15", icon: <SiNextdotjs /> },
+      { name: "Flutter", icon: <SiFlutter /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "HTML / CSS", icon: <FaDatabase /> },
     ],
   },
   {
-    title: 'Backend',
-    icon: <FaNodeJs />,
+    title: "Cloud & DevOps",
+    icon: <FaAws />,
     skills: [
-      { name: 'Node.js', icon: <FaNodeJs /> },
-      { name: 'Python', icon: <SiPython /> },
-      { name: 'MongoDB', icon: <SiMongodb /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: "AWS (EC2, S3, ECS)", icon: <FaAws /> },
+      { name: "Docker", icon: <FaDocker /> },
+      { name: "Terraform", icon: <SiTerraform /> },
+      { name: "GitHub Actions", icon: <FaGitAlt /> },
+      { name: "CI/CD", icon: <FaGitAlt /> },
+      { name: "Linux", icon: <SiLinux /> },
     ],
   },
   {
-    title: 'DevOps',
-    icon: <FaDocker />,
+    title: "Ciberseguridad",
+    icon: <FaDatabase />,
     skills: [
-      { name: 'Docker', icon: <FaDocker /> },
-      { name: 'Git', icon: <FaGitAlt /> },
-      { name: 'AWS', icon: <FaAws /> },
-      { name: 'CI/CD', icon: <FaDatabase /> },
+      { name: "Bug Bounty", icon: <FaDatabase /> },
+      { name: "OWASP Top 10", icon: <FaDatabase /> },
+      { name: "XSS · IDOR · SSRF", icon: <FaDatabase /> },
+      { name: "Burp Suite Pro", icon: <FaDatabase /> },
+      { name: "Recon & Enumeration", icon: <FaDatabase /> },
+      { name: "Smart Contracts Audit", icon: <FaDatabase /> },
     ],
   },
 ];
@@ -189,9 +211,7 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -200,9 +220,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-      },
+      transition: { duration: 0.5 },
     },
   };
 
@@ -216,18 +234,19 @@ const Skills = () => {
         role="heading"
         aria-level={2}
       >
-        Skills & Expertise
+        Skills & Stack
       </SectionTitle>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
+        style={{ width: "100%", maxWidth: "1200px" }}
       >
         <SkillsContainer role="list">
           {skillCategories.map((category, index) => (
-            <SkillCategory 
-              key={index} 
+            <SkillCategory
+              key={index}
               variants={itemVariants}
               role="listitem"
               aria-labelledby={`category-title-${index}`}
@@ -238,14 +257,13 @@ const Skills = () => {
               </CategoryTitle>
               <SkillsList role="list" aria-label={`${category.title} skills`}>
                 {category.skills.map((skill, skillIndex) => (
-                  <SkillItem 
-                    key={skillIndex} 
+                  <SkillItem
+                    key={skillIndex}
                     variants={itemVariants}
                     role="listitem"
                   >
                     <span aria-hidden="true">{skill.icon}</span>
                     <span>{skill.name}</span>
-                    <span className="sr-only">{`${skill.name} - ${category.title} skill`}</span>
                   </SkillItem>
                 ))}
               </SkillsList>

@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 
-const sections = ['hero', 'projects', 'skills', 'contact'];
+const sections = ['hero', 'projects', 'skills', 'achievements', 'contact'];
 
 export const useKeyboardNavigation = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only handle if not typing in an input
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
