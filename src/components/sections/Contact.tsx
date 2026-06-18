@@ -194,11 +194,11 @@ const Contact = () => {
           <ContactContent role="article">
             <ContactText variants={itemVariants} role="paragraph">
               Me encuentro abierto a oportunidades laborales y nuevos retos
-              profesionales en el ámbito del desarrollo de software, la
-              programación, las redes y la ciberseguridad. Si consideras que mi
-              perfil puede aportar valor a tu equipo o proyecto, no dudes en
-              contactar conmigo. Estaré encantado de conversar sobre posibles
-              oportunidades de colaboración.
+              profesionales en el ámbito del desarrollo de software, las redes y
+              la ciberseguridad. Si consideras que mi perfil puede aportar valor
+              a tu equipo o proyecto, no dudes en contactar conmigo. Estaré
+              encantado de conversar sobre posibles oportunidades de
+              colaboración.
             </ContactText>
             <ContactEmail
               href="mailto:rafamorenoo2004@gmail.com"
