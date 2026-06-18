@@ -294,7 +294,7 @@ const Projects = () => {
           role="heading"
           aria-level={2}
         >
-          Projects
+          Proyectos
         </SectionTitle>
         <motion.div
           variants={containerVariants}
