@@ -198,7 +198,7 @@ export const Layout = ({ children }: LayoutProps) => {
               Portfolio
             </Logo>
             <NavLinks role="list">
-              <a href="#about" role="listitem" aria-label="About section">
+              <a href="#hero" role="listitem" aria-label="About section">
                 Acerca de
               </a>
               <a href="#projects" role="listitem" aria-label="Projects section">
